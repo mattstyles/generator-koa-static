@@ -1,9 +1,8 @@
 'use strict';
-var util    = require('util');
-var path    = require('path');
-var fs      = require( 'fs' );
-var yeoman  = require('yeoman-generator');
-var yosay   = require('yosay');
+var util    = require( 'util' );
+var path    = require( 'path' );
+var yeoman  = require( 'yeoman-generator' );
+var yosay   = require( 'yosay' );
 
 module.exports  = yeoman.generators.Base.extend({
     init: function () {
@@ -16,7 +15,7 @@ module.exports  = yeoman.generators.Base.extend({
         });
     },
 
-    prompting: function () {
+    askFor: function () {
         var done = this.async();
 
         // Have Yeoman greet the user.
