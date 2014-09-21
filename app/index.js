@@ -14,9 +14,11 @@ module.exports  = yeoman.generators.Base.extend({
         var done = this.async();
 
         // Have Yeoman greet the user.
-        this.log( yosay(
-            'Welcome to the Koa-Static generator!'
-        ));
+        if ( !this.options[ 'skip-install-message' ] ) {
+            this.log( yosay(
+                'Welcome to the Koa-Static generator!'
+            ));
+        }
 
         // var prompts = [{
         //     type: 'confirm',
