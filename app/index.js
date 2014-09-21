@@ -8,6 +8,12 @@ var yosay   = require('yosay');
 module.exports  = yeoman.generators.Base.extend({
     init: function () {
         this.pkg = require( '../package.json' );
+
+        this.on( 'end', function() {
+            if ( !this.options[ 'skip-install' ] ) {
+                this.installDependencies();
+            }
+        });
     },
 
     prompting: function () {
@@ -59,10 +65,5 @@ module.exports  = yeoman.generators.Base.extend({
             this.dest.mkdir( 'lib/middleware' );
             this.dest.mkdir( 'public/vendor' );
         }
-
-    },
-
-    end: function () {
-        this.installDependencies();
     }
 });
