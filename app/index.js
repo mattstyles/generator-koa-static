@@ -46,7 +46,11 @@ module.exports  = yeoman.generators.Base.extend({
             this.directory( 'bin', 'bin' );
             this.directory( 'public', 'public' );
             this.directory( 'lib', 'lib' );
-        },
+
+            // Add extra empty dirs
+            this.dest.mkdir( 'lib/routes' );
+            this.dest.mkdir( 'lib/middleware' );
+        }
 
     },
 
