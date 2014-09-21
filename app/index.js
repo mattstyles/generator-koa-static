@@ -40,6 +40,7 @@ module.exports  = yeoman.generators.Base.extend({
             this.src.copy( 'bower.json', 'bower.json' );
             this.src.copy( '.bowerrc', '.bowerrc' );
             this.src.copy( 'README.md', 'README.md' );
+            this.src.copy( 'index.js', 'index.js' );
 
             // @TODO: be explicit
             this.directory( 'bin', 'bin' );
