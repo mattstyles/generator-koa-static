@@ -42,14 +42,20 @@ module.exports  = yeoman.generators.Base.extend({
             this.src.copy( 'README.md', 'README.md' );
             this.src.copy( 'index.js', 'index.js' );
 
-            // @TODO: be explicit
-            this.directory( 'bin', 'bin' );
-            this.directory( 'public', 'public' );
-            this.directory( 'lib', 'lib' );
+            this.dest.mkdir( 'bin' );
+            this.dest.mkdir( 'lib' );
+            this.dest.mkdir( 'public' );
+
+            this.src.copy( 'bin/start', 'bin/start' );
+            this.src.copy( 'lib/tmpl/404.hjs', 'lib/tmpl/404.hjs' );
+            this.src.copy( 'lib/util/views.js', 'lib/util/views.js' );
+            this.src.copy( 'lib/server.js', 'lib/server.js' );
+            this.src.copy( 'public/index.html', 'public/index.html' );
 
             // Add extra empty dirs
             this.dest.mkdir( 'lib/routes' );
             this.dest.mkdir( 'lib/middleware' );
+            this.dest.mkdir( 'public/vendor' );
         }
 
     },
