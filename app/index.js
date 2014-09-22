@@ -25,25 +25,35 @@ module.exports  = yeoman.generators.Base.extend({
             ));
         }
 
-        // var prompts = [{
-        //     type: 'confirm',
-        //     name: 'someOption',
-        //     message: 'Would you like to enable this option?',
-        //     default: true
-        // }];
-        //
-        // this.prompt(prompts, function (props) {
-        //     this.someOption = props.someOption;
-        //
-        //     done();
-        // }.bind(this));
+        var prompts = [
+            {
+                type: 'input',
+                name: 'projectName',
+                message: 'What would you like to call this awesome project?',
+                validate: function( str ) {
+                    return !/\s/.test( str );
+                }
+            },
+            {
+                type: 'input',
+                name: 'ghUser',
+                message: 'What is your Github username?'
+            }
+        ];
 
-        done();
+        this.prompt( prompts, function( props ) {
+            Object.keys( props ).forEach( function( prop ) {
+                this[ prop ] = props[ prop ];
+            }.bind( this ));
+
+            done();
+        }.bind( this ) );
     },
 
     writing: {
         app: function () {
-            this.src.copy( 'package.json', 'package.json' );
+            // this.src.copy( 'package.json', 'package.json' );
+            this.template( '_package.json', 'package.json' );
             this.src.copy( 'bower.json', 'bower.json' );
             this.src.copy( '.bowerrc', '.bowerrc' );
             this.src.copy( 'README.md', 'README.md' );
