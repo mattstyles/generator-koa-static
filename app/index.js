@@ -38,6 +38,12 @@ module.exports  = yeoman.generators.Base.extend({
                 type: 'input',
                 name: 'ghUser',
                 message: 'What is your Github username?'
+            },
+            {
+                type: 'list',
+                name: 'license',
+                message: 'What is the project license?',
+                choices: [ 'WTFPL', 'ISC', 'MIT' ]
             }
         ];
 
@@ -52,9 +58,8 @@ module.exports  = yeoman.generators.Base.extend({
 
     writing: {
         app: function () {
-            // this.src.copy( 'package.json', 'package.json' );
             this.template( '_package.json', 'package.json' );
-            this.src.copy( 'bower.json', 'bower.json' );
+            this.template( '_bower.json', 'bower.json' );
             this.src.copy( '.bowerrc', '.bowerrc' );
             this.src.copy( 'README.md', 'README.md' );
             this.src.copy( 'index.js', 'index.js' );
