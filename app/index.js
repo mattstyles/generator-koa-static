@@ -61,7 +61,7 @@ module.exports  = yeoman.generators.Base.extend({
             this.template( '_package.json', 'package.json' );
             this.template( '_bower.json', 'bower.json' );
             this.src.copy( '.bowerrc', '.bowerrc' );
-            this.src.copy( 'README.md', 'README.md' );
+            this.template( '_README.md', 'README.md' );
             this.src.copy( 'index.js', 'index.js' );
 
             this.dest.mkdir( 'bin' );

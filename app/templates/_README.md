@@ -1,3 +1,3 @@
-# @TODO: PROJECT NAME
+# <%= projectName %>
 
 > Simplest koa static server
