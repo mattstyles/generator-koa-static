@@ -20,7 +20,9 @@
     "app"
   ],
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "koa",
+    "koa-static"
   ],
   "dependencies": {
     "yeoman-generator": "^0.17.0",
