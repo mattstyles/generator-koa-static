@@ -1,3 +1,7 @@
+## 1.2.0
+
+* _update_ - dependencies
+
 ## 1.1.0
 
 * _add_ - prompts
