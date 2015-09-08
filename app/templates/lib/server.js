@@ -1,37 +1,42 @@
+import path from 'path'
 
-var path        = require( 'path' ),
+import koa from 'koa'
+import logger from 'koa-logger'
+import serve from 'koa-static'
+import route from 'koa-route'
 
-    koa         = require( 'koa' ),
-    logger      = require( 'koa-logger' ),
-    serve       = require( 'koa-static' ),
-    route       = require( 'koa-route' ),
+import render from './util/views'
 
-    render      = require( './util/views' ),
-
-    app;
+/**
+ * Main Koa Instance
+ */
+const app = koa()
 
 
-app = koa();
+/**
+ * Apply middlewares
+ */
 
-app.use( logger() );
+// Log it
+app.use( logger() )
 
 
 // Custom 404
 app.use( function *( next ) {
-    yield next;
+    yield next
 
     if ( this.body || !this.idempotent ) {
-        return;
+        return
     }
 
-    this.status = 404;
-    this.body = yield render( '404' );
-});
+    this.status = 404
+    this.body = yield render( '404' )
+})
 
 
-// Serve the frontend
-app.use( serve( path.join( __dirname, '../public' ) ) );
+// Just serve it up
+app.use( serve( path.join( __dirname, '../public' ) ) )
 
 
 // Export composable app
-module.exports = app;
+export default app
