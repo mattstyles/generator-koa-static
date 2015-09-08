@@ -17,7 +17,8 @@
     "test": "mocha"
   },
   "files": [
-    "app"
+    "app",
+    ".babelrc"
   ],
   "keywords": [
     "yeoman-generator",

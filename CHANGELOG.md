@@ -1,3 +1,7 @@
+## 2.0.2
+
+* _fix_ - dotfile inclusion
+
 ## 2.0.1
 
 * _fix_ - babel params
