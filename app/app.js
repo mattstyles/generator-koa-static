@@ -39,7 +39,6 @@ export default class GeneratorKoaStatic extends Base {
     static prompts = [{
         name: 'projectName',
         message: 'What is the name of your project?',
-        default: '@TODO',
         validate: str => {
             return !/\s/.test( str )
         }
