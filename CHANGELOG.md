@@ -1,3 +1,7 @@
+## 2.0.3
+
+* _fix_ babel ignore path
+
 ## 2.0.2
 
 * _fix_ - dotfile inclusion
