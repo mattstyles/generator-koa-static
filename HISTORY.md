@@ -1,3 +1,7 @@
+## 2.0.1
+
+* _fix_ - babel params
+
 ## 2.0.0
 
 * _update_ - scaffold out an es2015 and babel transpiled project
