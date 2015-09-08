@@ -1,6 +1,6 @@
 {
   "name": "generator-koa-static",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Yeoman generator",
   "license": "WTFPL",
   "main": "app/index.js",
