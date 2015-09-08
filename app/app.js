@@ -1,6 +1,7 @@
 
 import path from 'path'
 
+import glob from 'glob'
 import osenv from 'osenv'
 import chalk from 'chalk'
 import { Base } from 'yeoman-generator'
@@ -10,9 +11,14 @@ import yosay from 'yosay'
 
 /**
  * generator-koa-static
+ * @class
+ * @extends Base <Yeoman-generator>
  */
 export default class GeneratorKoaStatic extends Base {
 
+    /**
+     * @constructs
+     */
     constructor( ...args ) {
         super( ...args )
 
@@ -21,11 +27,19 @@ export default class GeneratorKoaStatic extends Base {
         }
     }
 
+    /**
+     * Package, info used in templates
+     */
     pkg = require( '../package.json' )
 
+    /**
+     * Prompts for user config
+     * @static
+     */
     static prompts = [{
         name: 'projectName',
         message: 'What is the name of your project?',
+        default: '@TODO',
         validate: str => {
             return !/\s/.test( str )
         }
@@ -49,6 +63,9 @@ export default class GeneratorKoaStatic extends Base {
         choices: [ 'WTFPL', 'ISC', 'MIT' ]
     }]
 
+    /**
+     * Initial greeting app state
+     */
     hello() {
         this.log( yosay([
             chalk.cyan( 'Koa Static' ),
@@ -56,6 +73,9 @@ export default class GeneratorKoaStatic extends Base {
         ].join( '\n' ) ))
     }
 
+    /**
+     * Prompting for user config app state
+     */
     prompting() {
         let done = this.async()
 
@@ -65,10 +85,43 @@ export default class GeneratorKoaStatic extends Base {
         })
     }
 
+    /**
+     * Main scaffold app state
+     */
     app() {
-        console.log( 'doing app stuff' )
+        let done = this.async()
+
+        this.log( 'Copying templates' )
+
+        glob( path.join( this.sourceRoot(), '**/*' ), {
+            dot: true
+        }, ( err, files ) => {
+            if ( err ) {
+                throw new Error( err )
+            }
+
+            files
+                .map( file => {
+                    return file.replace( this.sourceRoot(), '' )
+                })
+                .map( file => {
+                    return file.replace( /^\//, '' )
+                })
+                .forEach( file => {
+                    this.fs.copyTpl(
+                        this.templatePath( file ),
+                        this.destinationPath( file ),
+                        this.props
+                    )
+                })
+
+            done()
+        })
     }
 
+    /**
+     * Install app state
+     */
     install() {
         if ( this.options[ 'skip-install' ] ) {
             this.log( 'Skipping install' )

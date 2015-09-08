@@ -1,14 +1,14 @@
 {
   "name": "<%= projectName %>",
   "version": "0.0.0",
-  "description": "",
+  "description": "<%= projectDescription %>",
   "main": "index.js",
   "scripts": {
     "start": "./bin/start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "<%= ghUser %>",
-  "repository": "git://github.com/<%= ghUser %>/<%= projectName %>.git",
+  "author": "<%= authorName %>",
+  "repository": "git://github.com/<%= userName %>/<%= projectName %>.git",
   "license": "<%= license %>",
   "dependencies": {
     "co-body": "^4.0.0",
