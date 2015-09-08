@@ -28,4 +28,8 @@ describe('generator-koa-static:app', function () {
             'index.js'
         ])
     })
+
+    it( 'should add an author to the readme', function() {
+        assert.fileContent( 'package.json', /"author": "test-author"/ )
+    })
 })
