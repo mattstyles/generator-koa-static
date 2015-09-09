@@ -21,15 +21,17 @@ describe('generator-koa-static:app', function () {
             .on('end', done)
     })
 
-    it('creates files', function () {
+    it('creates files', function( done ) {
         assert.file([
             'package.json',
             'README.md',
             'index.js'
         ])
+        done()
     })
 
-    it( 'should add an author to the readme', function() {
+    it( 'should add an author to the readme', function( done ) {
         assert.fileContent( 'package.json', /"author": "test-author"/ )
+        done()
     })
 })
