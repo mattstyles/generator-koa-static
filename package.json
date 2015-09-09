@@ -4,7 +4,7 @@
   "description": "Yeoman generator",
   "license": "WTFPL",
   "main": "app/index.js",
-  "repository": "git://github.com/mattstyles/generator-generator-koa-static",
+  "repository": "git://github.com/mattstyles/generator-koa-static",
   "author": {
     "name": "Matt Styles",
     "email": "matt@veryfizzyjelly.com",
